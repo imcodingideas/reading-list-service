@@ -45,7 +45,7 @@ export class BooksRepository {
     return books;
   }
 
-  createBook(book: CreateBookInput): void {
+  createBook(book: CreateBookInput): Book | null {
     const newBook: Book = {
       ...book,
       status: book.status ?? Status.NOT_STARTED,
@@ -53,13 +53,19 @@ export class BooksRepository {
     };
 
     books = [...books, newBook];
+
+    return newBook;
   }
 
-  updateBook(book: Book): void {
+  updateBook(book: Book): Book | null {
     books = books.map((b) => (b.id === book.id ? book : b));
+
+    return books.find((b) => b.id === book.id) ?? null;
   }
 
-  deleteBook(id: string): void {
+  deleteBook(id: string): boolean {
     books = books.filter((book) => book.id !== id);
+
+    return !books.find((b) => b.id === id);
   }
 }
