@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateBookInput } from 'src/graphql';
+import { CreateBookInput, UpdateBookInput } from 'src/graphql';
 import { BooksRepository } from './books.repository';
 
 @Resolver('Books')
@@ -14,5 +14,10 @@ export class BooksResolver {
   @Mutation()
   async createBook(@Args('input') input: CreateBookInput) {
     return this.booksRepository.createBook(input);
+  }
+
+  @Mutation()
+  async updateBook(@Args('input') input: UpdateBookInput) {
+    return this.booksRepository.updateBook(input);
   }
 }

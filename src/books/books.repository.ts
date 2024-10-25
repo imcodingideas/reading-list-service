@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { Book, CreateBookInput, Status } from 'src/graphql';
+import { Book, CreateBookInput, Status, UpdateBookInput } from 'src/graphql';
 
 let books: Book[] = [
   {
@@ -57,8 +57,8 @@ export class BooksRepository {
     return newBook;
   }
 
-  updateBook(book: Book): Book | null {
-    books = books.map((b) => (b.id === book.id ? book : b));
+  updateBook(book: UpdateBookInput): Book | null {
+    books = books.map((b) => (b.id === book.id ? { ...b, ...book } : b));
 
     return books.find((b) => b.id === book.id) ?? null;
   }
