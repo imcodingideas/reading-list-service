@@ -1,7 +1,50 @@
 type Book {
-  name: String!
+  id: ID!
+  title: String!
+  author: String!
+  status: Status!
+  rating: Float
+  notes: String
+}
+
+enum Status {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+input CreateBookInput {
+  title: String!
+  author: String!
+  status: Status
+  rating: Float
+  notes: String
+}
+
+input UpdateBookInput {
+  id: ID!
+  title: String
+  author: String
+  status: Status
+  rating: Float
+  notes: String
+}
+
+input DeleteBookInput {
+  id: ID!
+}
+
+input GetBookInput {
+  id: ID!
 }
 
 type Query {
-  getBooks: [Book!]!
+  getBook(input: GetBookInput!): Book
+  listBooks: [Book!]
+}
+
+type Mutation {
+  createBook(input: CreateBookInput!): Book
+  updateBook(input: UpdateBookInput!): Book
+  deleteBook(input: DeleteBookInput!): Boolean
 }
