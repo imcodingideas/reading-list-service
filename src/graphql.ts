@@ -35,7 +35,7 @@ export class DeleteBookInput {
     id: string;
 }
 
-export class GetBookInput {
+export class GetBookByIdInput {
     id: string;
 }
 
@@ -49,7 +49,7 @@ export class Book {
 }
 
 export abstract class IQuery {
-    abstract getBook(input: GetBookInput): Nullable<Book> | Promise<Nullable<Book>>;
+    abstract getBookById(input: GetBookByIdInput): Nullable<Book> | Promise<Nullable<Book>>;
 
     abstract listBooks(): Nullable<Book[]> | Promise<Nullable<Book[]>>;
 }

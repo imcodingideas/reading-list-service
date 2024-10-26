@@ -34,12 +34,12 @@ input DeleteBookInput {
   id: ID!
 }
 
-input GetBookInput {
+input GetBookByIdInput {
   id: ID!
 }
 
 type Query {
-  getBook(input: GetBookInput!): Book
+  getBookById(input: GetBookByIdInput!): Book
   listBooks: [Book!]
 }
 
