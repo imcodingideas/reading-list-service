@@ -4,6 +4,7 @@ import {
   DeleteBookInput,
   GetBookByIdInput,
   UpdateBookInput,
+  AllBooksConnection,
 } from 'src/graphql';
 import { BooksRepository } from './books.repository';
 
@@ -12,8 +13,26 @@ export class BooksResolver {
   constructor(private readonly booksRepository: BooksRepository) {}
 
   @Query()
-  async listBooks() {
-    return this.booksRepository.listBooks();
+  async books(
+    @Args('limit') limit: number,
+    @Args('offset') offset: number,
+  ): Promise<AllBooksConnection> {
+    const allBooks = this.booksRepository.listBooks();
+    const totalResults = allBooks.length;
+    const books = allBooks.slice(offset, offset + limit);
+    const nextOffset = offset + limit < totalResults ? offset + limit : null;
+    const previousOffset = offset - limit < 0 ? null : offset - limit;
+
+    return {
+      node: books,
+      offsetPageInfo: {
+        totalResults,
+        limit,
+        offset,
+        nextOffset,
+        previousOffset,
+      },
+    };
   }
 
   @Query()

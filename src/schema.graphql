@@ -38,9 +38,22 @@ input GetBookByIdInput {
   id: ID!
 }
 
+type OffsetPageInfo {
+  totalResults: Int!
+  limit: Int!
+  offset: Int!
+  nextOffset: Int
+  previousOffset: Int
+}
+
+type AllBooksConnection {
+  node: [Book!]!
+  offsetPageInfo: OffsetPageInfo!
+}
+
 type Query {
+  books(limit: Int = 10, offset: Int = 0): AllBooksConnection!
   getBookById(input: GetBookByIdInput!): Book
-  listBooks: [Book!]
 }
 
 type Mutation {

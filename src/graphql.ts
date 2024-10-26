@@ -48,10 +48,23 @@ export class Book {
     notes?: Nullable<string>;
 }
 
-export abstract class IQuery {
-    abstract getBookById(input: GetBookByIdInput): Nullable<Book> | Promise<Nullable<Book>>;
+export class OffsetPageInfo {
+    totalResults: number;
+    limit: number;
+    offset: number;
+    nextOffset?: Nullable<number>;
+    previousOffset?: Nullable<number>;
+}
 
-    abstract listBooks(): Nullable<Book[]> | Promise<Nullable<Book[]>>;
+export class AllBooksConnection {
+    node: Book[];
+    offsetPageInfo: OffsetPageInfo;
+}
+
+export abstract class IQuery {
+    abstract books(limit?: Nullable<number>, offset?: Nullable<number>): AllBooksConnection | Promise<AllBooksConnection>;
+
+    abstract getBookById(input: GetBookByIdInput): Nullable<Book> | Promise<Nullable<Book>>;
 }
 
 export abstract class IMutation {
