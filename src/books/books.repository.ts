@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { Book, CreateBookInput, Status, UpdateBookInput } from 'src/graphql';
 

@@ -18,6 +18,7 @@ export class BooksResolver {
     @Args('offset') offset: number,
   ): Promise<AllBooksConnection> {
     const allBooks = this.booksRepository.listBooks();
+
     const totalResults = allBooks.length;
     const books = allBooks.slice(offset, offset + limit);
     const nextOffset = offset + limit < totalResults ? offset + limit : null;
