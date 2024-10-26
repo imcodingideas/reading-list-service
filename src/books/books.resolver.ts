@@ -11,7 +11,7 @@ import {
   DeleteBookInput,
   GetBookByIdInput,
   UpdateBookInput,
-} from 'src/graphql';
+} from '../graphql';
 import { BooksRepository } from './books.repository';
 
 const filterBooks = (books: Book[], filter: BooksSearchFilter): Book[] => {
