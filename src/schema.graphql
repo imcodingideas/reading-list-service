@@ -77,6 +77,7 @@ input BooksSearchFilter {
   title: String
   author: String
   status: Status
+  rating: Int
 }
 
 type Query {

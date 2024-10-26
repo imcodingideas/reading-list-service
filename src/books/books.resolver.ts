@@ -38,6 +38,10 @@ const filterBooks = (books: Book[], filter: BooksSearchFilter): Book[] => {
       return false;
     }
 
+    if (filter.rating && book.rating < filter.rating) {
+      return false;
+    }
+
     return true;
   });
 };

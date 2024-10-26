@@ -60,6 +60,7 @@ export class BooksSearchFilter {
     title?: Nullable<string>;
     author?: Nullable<string>;
     status?: Nullable<Status>;
+    rating?: Nullable<number>;
 }
 
 export class Book {
