@@ -51,9 +51,43 @@ type AllBooksConnection {
   offsetPageInfo: OffsetPageInfo!
 }
 
+type BookSearchResultConnection {
+  node: [Book!]!
+  offsetPageInfo: OffsetPageInfo!
+}
+
+enum BOOK_SEARCH_SORT_COLUMN {
+  TITLE
+  AUTHOR
+  STATUS
+  RATING
+}
+
+enum BOOK_SEARCH_SORT_ORDER {
+  ASC
+  DESC
+}
+
+input BooksSearchSort {
+  column: BOOK_SEARCH_SORT_COLUMN!
+  order: BOOK_SEARCH_SORT_ORDER!
+}
+
+input BooksSearchFilter {
+  title: String
+  author: String
+  status: Status
+}
+
 type Query {
   books(limit: Int = 10, offset: Int = 0): AllBooksConnection!
   getBookById(input: GetBookByIdInput!): Book
+  bookSearch(
+    limit: Int = 10
+    offset: Int = 0
+    sort: BooksSearchSort
+    filter: BooksSearchFilter
+  ): BookSearchResultConnection!
 }
 
 type Mutation {

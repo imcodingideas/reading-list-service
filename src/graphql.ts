@@ -14,6 +14,18 @@ export enum Status {
     COMPLETED = "COMPLETED"
 }
 
+export enum BOOK_SEARCH_SORT_COLUMN {
+    TITLE = "TITLE",
+    AUTHOR = "AUTHOR",
+    STATUS = "STATUS",
+    RATING = "RATING"
+}
+
+export enum BOOK_SEARCH_SORT_ORDER {
+    ASC = "ASC",
+    DESC = "DESC"
+}
+
 export class CreateBookInput {
     title: string;
     author: string;
@@ -39,6 +51,17 @@ export class GetBookByIdInput {
     id: string;
 }
 
+export class BooksSearchSort {
+    column: BOOK_SEARCH_SORT_COLUMN;
+    order: BOOK_SEARCH_SORT_ORDER;
+}
+
+export class BooksSearchFilter {
+    title?: Nullable<string>;
+    author?: Nullable<string>;
+    status?: Nullable<Status>;
+}
+
 export class Book {
     id: string;
     title: string;
@@ -61,10 +84,17 @@ export class AllBooksConnection {
     offsetPageInfo: OffsetPageInfo;
 }
 
+export class BookSearchResultConnection {
+    node: Book[];
+    offsetPageInfo: OffsetPageInfo;
+}
+
 export abstract class IQuery {
     abstract books(limit?: Nullable<number>, offset?: Nullable<number>): AllBooksConnection | Promise<AllBooksConnection>;
 
     abstract getBookById(input: GetBookByIdInput): Nullable<Book> | Promise<Nullable<Book>>;
+
+    abstract bookSearch(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<BooksSearchSort>, filter?: Nullable<BooksSearchFilter>): BookSearchResultConnection | Promise<BookSearchResultConnection>;
 }
 
 export abstract class IMutation {
