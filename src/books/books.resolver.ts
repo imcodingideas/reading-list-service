@@ -139,22 +139,28 @@ export class BooksResolver {
   }
 
   @Query()
-  async getBookById(@Args('input') input: GetBookByIdInput) {
+  async getBookById(
+    @Args('input') input: GetBookByIdInput,
+  ): Promise<Book | null> {
     return this.booksRepository.getBookById(input.id);
   }
 
   @Mutation()
-  async createBook(@Args('input') input: CreateBookInput) {
+  async createBook(
+    @Args('input') input: CreateBookInput,
+  ): Promise<Book | null> {
     return this.booksRepository.createBook(input);
   }
 
   @Mutation()
-  async updateBook(@Args('input') input: UpdateBookInput) {
+  async updateBook(
+    @Args('input') input: UpdateBookInput,
+  ): Promise<Book | null> {
     return this.booksRepository.updateBook(input);
   }
 
   @Mutation()
-  async deleteBook(@Args('input') input: DeleteBookInput) {
+  async deleteBook(@Args('input') input: DeleteBookInput): Promise<boolean> {
     return this.booksRepository.deleteBook(input.id);
   }
 }
