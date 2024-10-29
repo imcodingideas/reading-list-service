@@ -7,7 +7,7 @@ let books: Book[] = JSON.parse(
   readFileSync(join(process.cwd(), 'src/books/books.json'), 'utf8'),
 );
 
-export class BooksRepository {
+export class BooksMockRepository {
   getBookById(id: string): Book | null {
     return books.find((book) => book.id === id) ?? null;
   }
@@ -21,6 +21,8 @@ export class BooksRepository {
       ...book,
       status: book.status ?? Status.NOT_STARTED,
       id: randomUUID(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
 
     books = [...books, newBook];
@@ -29,7 +31,9 @@ export class BooksRepository {
   }
 
   updateBook(book: UpdateBookInput): Book | null {
-    books = books.map((b) => (b.id === book.id ? { ...b, ...book } : b));
+    books = books.map((b) =>
+      b.id === book.id ? { ...b, ...book, updatedAt: new Date() } : b,
+    );
 
     return books.find((b) => b.id === book.id) ?? null;
   }

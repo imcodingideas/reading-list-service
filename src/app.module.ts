@@ -1,12 +1,18 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'node:path';
-import { BooksModule } from './books/books.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'reading-list-service.sqlite',
+      entities: [join(__dirname, '**/*.entity{.ts,.js}')],
+      synchronize: true,
+    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
@@ -15,7 +21,6 @@ import { HealthModule } from './health/health.module';
         outputAs: 'class',
       },
     }),
-    BooksModule,
     HealthModule,
   ],
 })

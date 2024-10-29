@@ -1,9 +1,8 @@
+import { Logger } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   AllBooksConnection,
   Book,
-  BOOK_SEARCH_SORT_COLUMN,
-  BOOK_SEARCH_SORT_ORDER,
   BookSearchResultConnection,
   BooksSearchFilter,
   BooksSearchSort,
@@ -12,79 +11,14 @@ import {
   GetBookByIdInput,
   UpdateBookInput,
 } from '../graphql';
-import { BooksRepository } from './books.repository';
-
-const filterBooks = (books: Book[], filter: BooksSearchFilter): Book[] => {
-  if (!filter) {
-    return books;
-  }
-
-  return books.filter((book) => {
-    if (
-      filter.title &&
-      !book.title.toLowerCase().includes(filter.title.toLowerCase())
-    ) {
-      return false;
-    }
-
-    if (
-      filter.author &&
-      !book.author.toLowerCase().includes(filter.author.toLowerCase())
-    ) {
-      return false;
-    }
-
-    if (filter.status && book.status !== filter.status) {
-      return false;
-    }
-
-    if (filter.rating && book.rating < filter.rating) {
-      return false;
-    }
-
-    return true;
-  });
-};
-
-const sortBooks = (books: Book[], sort: BooksSearchSort): Book[] => {
-  if (!sort) {
-    return books;
-  }
-
-  return books.sort((a, b) => {
-    if (sort.column === BOOK_SEARCH_SORT_COLUMN.RATING) {
-      if (sort.order === BOOK_SEARCH_SORT_ORDER.ASC) {
-        return a.rating - b.rating;
-      }
-      return b.rating - a.rating;
-    }
-
-    if (sort.column === BOOK_SEARCH_SORT_COLUMN.TITLE) {
-      if (sort.order === BOOK_SEARCH_SORT_ORDER.ASC) {
-        return a.title.localeCompare(b.title);
-      }
-      return b.title.localeCompare(a.title);
-    }
-
-    if (sort.column === BOOK_SEARCH_SORT_COLUMN.AUTHOR) {
-      if (sort.order === BOOK_SEARCH_SORT_ORDER.ASC) {
-        return a.author.localeCompare(b.author);
-      }
-      return b.author.localeCompare(a.author);
-    }
-
-    if (sort.column === BOOK_SEARCH_SORT_COLUMN.STATUS) {
-      if (sort.order === BOOK_SEARCH_SORT_ORDER.ASC) {
-        return a.status.localeCompare(b.status);
-      }
-      return b.status.localeCompare(a.status);
-    }
-  });
-};
+import { BooksService } from './books.service';
 
 @Resolver('Books')
 export class BooksResolver {
-  constructor(private readonly booksRepository: BooksRepository) {}
+  constructor(
+    private readonly booksService: BooksService,
+    private readonly logger: Logger,
+  ) {}
 
   @Query()
   async bookSearch(
@@ -93,17 +27,18 @@ export class BooksResolver {
     @Args('sort') sort: BooksSearchSort,
     @Args('filter') filter: BooksSearchFilter,
   ): Promise<BookSearchResultConnection> {
-    const allBooks = this.booksRepository.listBooks();
-    const filteredBooks = filterBooks(allBooks, filter);
-    const sortedBooks = sortBooks(filteredBooks, sort);
-
-    const totalResults = sortedBooks.length;
-    const node = sortedBooks.slice(offset, offset + limit);
+    const books = await this.booksService.bookSearch(
+      limit,
+      offset,
+      sort,
+      filter,
+    );
+    const totalResults = await this.booksService.bookSearchCount(filter);
     const nextOffset = offset + limit < totalResults ? offset + limit : null;
     const previousOffset = offset - limit < 0 ? null : offset - limit;
 
     return {
-      node,
+      node: books,
       offsetPageInfo: {
         totalResults,
         limit,
@@ -119,10 +54,9 @@ export class BooksResolver {
     @Args('limit') limit: number,
     @Args('offset') offset: number,
   ): Promise<AllBooksConnection> {
-    const allBooks = this.booksRepository.listBooks();
-
-    const totalResults = allBooks.length;
-    const books = allBooks.slice(offset, offset + limit);
+    this.logger.log('books');
+    const books = await this.booksService.listBooks(limit, offset);
+    const totalResults = await this.booksService.getBooksCount();
     const nextOffset = offset + limit < totalResults ? offset + limit : null;
     const previousOffset = offset - limit < 0 ? null : offset - limit;
 
@@ -142,25 +76,25 @@ export class BooksResolver {
   async getBookById(
     @Args('input') input: GetBookByIdInput,
   ): Promise<Book | null> {
-    return this.booksRepository.getBookById(input.id);
+    return this.booksService.getBookById(input.id);
   }
 
   @Mutation()
   async createBook(
     @Args('input') input: CreateBookInput,
   ): Promise<Book | null> {
-    return this.booksRepository.createBook(input);
+    return this.booksService.createBook(input);
   }
 
   @Mutation()
   async updateBook(
     @Args('input') input: UpdateBookInput,
   ): Promise<Book | null> {
-    return this.booksRepository.updateBook(input);
+    return this.booksService.updateBook(input.id, input);
   }
 
   @Mutation()
   async deleteBook(@Args('input') input: DeleteBookInput): Promise<boolean> {
-    return this.booksRepository.deleteBook(input.id);
+    return this.booksService.deleteBook(input.id);
   }
 }

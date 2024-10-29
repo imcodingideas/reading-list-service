@@ -5,7 +5,9 @@
     "author": "Author 1",
     "status": "COMPLETED",
     "rating": 4,
-    "notes": "Notes for Book 1"
+    "notes": "Notes for Book 1",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "e18d5b00-9c9b-464b-8240-6b8d2f2ddb21",
@@ -13,7 +15,9 @@
     "author": "Author 2",
     "status": "IN_PROGRESS",
     "rating": 3,
-    "notes": "Notes for Book 2"
+    "notes": "Notes for Book 2",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "e71af27f-421a-46e3-afb1-183e191d8da4",
@@ -21,7 +25,9 @@
     "author": "Author 3",
     "status": "NOT_STARTED",
     "rating": 2,
-    "notes": "Notes for Book 3"
+    "notes": "Notes for Book 3",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "bf42abe0-0bc5-4567-8642-74a18bc38a95",
@@ -29,7 +35,9 @@
     "author": "Author 4",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 4"
+    "notes": "Notes for Book 4",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "7aa3d2c3-05fa-4f56-a457-4f8994d8ca6f",
@@ -37,7 +45,9 @@
     "author": "Author 5",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 5"
+    "notes": "Notes for Book 5",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "bea99b48-6e84-41a9-96d3-1e5c5ef9ae76",
@@ -45,7 +55,9 @@
     "author": "Author 6",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 6"
+    "notes": "Notes for Book 6",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "9eced59c-a6ca-4dfd-a7e2-d902aa923cb8",
@@ -53,7 +65,9 @@
     "author": "Author 7",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 7"
+    "notes": "Notes for Book 7",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "c1502529-248a-4c7c-a47c-d90e61de7807",
@@ -61,7 +75,9 @@
     "author": "Author 8",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 8"
+    "notes": "Notes for Book 8",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "90157475-9f9b-4478-8a16-84d074d2dcff",
@@ -69,7 +85,9 @@
     "author": "Author 9",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 9"
+    "notes": "Notes for Book 9",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "ec8cda36-8b19-441a-a786-2a14af1dfd84",
@@ -77,7 +95,9 @@
     "author": "Author 10",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 10"
+    "notes": "Notes for Book 10",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "fbfb8bcf-9f6c-4b6a-89a7-3185504a422c",
@@ -85,7 +105,9 @@
     "author": "Author 11",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 11"
+    "notes": "Notes for Book 11",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "82f571ff-5f7d-46c1-bb26-6f6c72ddda13",
@@ -93,7 +115,9 @@
     "author": "Author 12",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 12"
+    "notes": "Notes for Book 12",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "89ef65c2-fbb4-4e99-866a-f6ed5eba0826",
@@ -101,7 +125,9 @@
     "author": "Author 13",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 13"
+    "notes": "Notes for Book 13",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "ef72c575-f543-4e43-a942-2080bdcb65d8",
@@ -109,7 +135,9 @@
     "author": "Author 14",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 14"
+    "notes": "Notes for Book 14",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "f32c9fbc-0014-43ec-9f34-80215a137a0e",
@@ -117,7 +145,9 @@
     "author": "Author 15",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 15"
+    "notes": "Notes for Book 15",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "5f5c3466-eb71-42cc-a698-c0765471dccf",
@@ -125,7 +155,9 @@
     "author": "Author 16",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 16"
+    "notes": "Notes for Book 16",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "33c76b29-2d55-4ec5-9526-405efc1a23f8",
@@ -133,7 +165,9 @@
     "author": "Author 17",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 17"
+    "notes": "Notes for Book 17",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "70382eb5-f59c-43a9-9a3d-f52da8fb8cbb",
@@ -141,7 +175,9 @@
     "author": "Author 18",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 18"
+    "notes": "Notes for Book 18",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "bc7cbbf1-f9c2-4f62-b65f-4b935324da46",
@@ -149,7 +185,9 @@
     "author": "Author 19",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 19"
+    "notes": "Notes for Book 19",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": "d3d9b485-32c7-43a1-8493-54331b8e5657",
@@ -157,6 +195,8 @@
     "author": "Author 20",
     "status": "NOT_STARTED",
     "rating": 3,
-    "notes": "Notes for Book 20"
+    "notes": "Notes for Book 20",
+    "createdAt": "2023-03-01T00:00:00.000Z",
+    "updatedAt": "2023-03-01T00:00:00.000Z"
   }
 ]

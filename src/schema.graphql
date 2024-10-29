@@ -1,3 +1,5 @@
+scalar DateTime
+
 type Book {
   id: ID!
   title: String!
@@ -5,6 +7,8 @@ type Book {
   status: Status!
   rating: Float
   notes: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 enum Status {

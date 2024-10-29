@@ -70,6 +70,8 @@ export class Book {
     status: Status;
     rating?: Nullable<number>;
     notes?: Nullable<string>;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class OffsetPageInfo {
@@ -106,4 +108,5 @@ export abstract class IMutation {
     abstract deleteBook(input: DeleteBookInput): Nullable<boolean> | Promise<Nullable<boolean>>;
 }
 
+export type DateTime = any;
 type Nullable<T> = T | null;
