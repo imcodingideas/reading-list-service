@@ -5,12 +5,12 @@ import {
   BookSearchResultConnection,
   BooksSearchFilter,
   BooksSearchSort,
-  CreateBookInput,
   DeleteBookInput,
   GetBookByIdInput,
-  UpdateBookInput,
 } from '../graphql';
 import { BooksService } from './books.service';
+import { CreateBookDto } from './dtos/create-book.dto';
+import { UpdateBookDto } from './dtos/update-book.dto';
 
 @Resolver('Books')
 export class BooksResolver {
@@ -75,16 +75,12 @@ export class BooksResolver {
   }
 
   @Mutation()
-  async createBook(
-    @Args('input') input: CreateBookInput,
-  ): Promise<Book | null> {
+  async createBook(@Args('input') input: CreateBookDto): Promise<Book | null> {
     return this.booksService.createBook(input);
   }
 
   @Mutation()
-  async updateBook(
-    @Args('input') input: UpdateBookInput,
-  ): Promise<Book | null> {
+  async updateBook(@Args('input') input: UpdateBookDto): Promise<Book | null> {
     return this.booksService.updateBook(input.id, input);
   }
 

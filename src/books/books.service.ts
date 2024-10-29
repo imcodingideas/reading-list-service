@@ -6,8 +6,8 @@ import {
   BooksSearchFilter,
   BooksSearchSort,
 } from '../graphql';
-import { BookDto } from './book.dto';
 import { Book } from './book.entity';
+import { CreateBookDto } from './dtos/create-book.dto';
 
 const GRAPHQL_COLUMN_TO_TYPEORM_COLUMN = {
   [BOOK_SEARCH_SORT_COLUMN.TITLE]: BOOK_SEARCH_SORT_COLUMN.TITLE.toLowerCase(),
@@ -73,7 +73,7 @@ export class BooksService {
     return booksCount;
   }
 
-  async createBook(book: BookDto): Promise<Book | null> {
+  async createBook(book: CreateBookDto): Promise<Book | null> {
     return this.booksRepository.save(book);
   }
 
