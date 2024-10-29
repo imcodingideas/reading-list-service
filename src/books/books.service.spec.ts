@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TypeOrmTestingModule } from 'src/test-utils/type-orm-mock';
 import { Book } from './book.entity';
 import { BooksService } from './books.service';
 

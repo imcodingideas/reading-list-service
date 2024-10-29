@@ -3,13 +3,14 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'node:path';
+import { BooksModule } from './books/books.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'reading-list-service.sqlite',
+      database: 'database.sqlite',
       entities: [join(__dirname, '**/*.entity{.ts,.js}')],
       synchronize: true,
     }),
@@ -22,6 +23,7 @@ import { HealthModule } from './health/health.module';
       },
     }),
     HealthModule,
+    BooksModule,
   ],
 })
 export class AppModule {}

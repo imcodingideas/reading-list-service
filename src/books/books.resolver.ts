@@ -1,4 +1,3 @@
-import { Logger } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   AllBooksConnection,
@@ -15,10 +14,7 @@ import { BooksService } from './books.service';
 
 @Resolver('Books')
 export class BooksResolver {
-  constructor(
-    private readonly booksService: BooksService,
-    private readonly logger: Logger,
-  ) {}
+  constructor(private readonly booksService: BooksService) {}
 
   @Query()
   async bookSearch(
@@ -54,7 +50,6 @@ export class BooksResolver {
     @Args('limit') limit: number,
     @Args('offset') offset: number,
   ): Promise<AllBooksConnection> {
-    this.logger.log('books');
     const books = await this.booksService.listBooks(limit, offset);
     const totalResults = await this.booksService.getBooksCount();
     const nextOffset = offset + limit < totalResults ? offset + limit : null;
